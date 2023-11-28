@@ -106,7 +106,7 @@ class MultiHeadAttention(nn.Module):
 
         w = F.softmax(qk, dim=-1).to(q.dtype)
         #modify here qk to w
-        return (w @ v).permute(0, 2, 1, 3).flatten(start_dim=2), qk
+        return (w @ v).permute(0, 2, 1, 3).flatten(start_dim=2), w
 
 class MultiHeadAttentionPE(nn.Module):
     def __init__(self, n_state: int, n_head: int):
